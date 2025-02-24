@@ -1,13 +1,15 @@
 <?php
-$serverName = "PC_DA_MARISA\\SQL"; // Nome do servidor (use duas barras invertidas)
-$database = "BIQ"; // Nome da base de dados
-$username = "sa"; // Usuário do SQL Server
-$password = "123456789"; // Senha do SQL Server
+// Carregar o arquivo JSON e converter para um array associativo
+$config = json_decode(file_get_contents('config.json'), true);
 
 try {
-    $conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $username, $password);
+    // Criar conexão PDO com SQL Server usando as configurações do config.php
+    $conn = new PDO(
+        "sqlsrv:Server={$config['serverName']};Database={$config['database']}",
+        $config['username'],
+        $config['password']
+    );
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexão com SQL Server realizada com sucesso!";
 } catch (PDOException $e) {
     die("Erro de conexão: " . $e->getMessage());
 }
