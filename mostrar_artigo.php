@@ -27,9 +27,18 @@
                 <p><strong>Preço com IVA:</strong> <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€</p>
                 <p><strong>Preço sem IVA:</strong> <?= number_format(floatval($artigo['pvpsiva']), 3, '.', '') ?>€</p>
 
-                <?php if (!empty($artigo['imagem'])): ?>
-                    <p><img src="<?= $config['caminhoImagens'] . $artigo['imagem'] ?>" alt="Imagem do artigo" width="150"></p>
-                <?php endif; ?>
+                <?php
+                    $imagemFinal = $config['caminhoImagens'] . "default.png"; // Valor padrão
+
+                    if (!empty($artigo['imagem'])) {
+                        $caminhoImagem = $config['caminhoImagens'] . $artigo['imagem'];
+
+                        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $caminhoImagem)) {
+                            $imagemFinal = $caminhoImagem;
+                        }
+                    }
+                ?>
+                <p><img src="<?= htmlspecialchars($imagemFinal) ?>" alt="Imagem do artigo" width="150"></p>
 
             <?php else: ?>
                 <p>Artigo não encontrado!</p>
