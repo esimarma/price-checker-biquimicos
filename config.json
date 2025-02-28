@@ -4,5 +4,5 @@
     "username": "sa",
     "password": "123456789",
     "linhaPreco": 4,
-    "caminhoImagens": "10.1.30.12\\imagens\\"
+    "caminhoImagens": "/price-checker-biquimicos/imagens/"
 }
