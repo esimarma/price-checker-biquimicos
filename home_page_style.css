@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 5vw;
+}
+
+.container {
+    width: 95%;
+    max-width: 95%;
+    background: white;
+    padding: 1vw;
+    padding-top: 3vw;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    color: #008299;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-top: 2vw;
+}
+
+.subtext {
+    color: #666;
+    font-size: 1.5vw;
+    margin-top: 1vw;
+}
+
+.box {
+    background: 
+        url('Imagens/fundo.svg') no-repeat center center, /* Camada do SVG */
+        #008299; /* Cor de fundo abaixo da imagem */
+    color: white;
+    padding: 6vw;
+    margin-top: 6vw;
+    border-radius: 15px;
+}
+
+.box strong {
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Separa texto e imagem */
+}
+
+.text {
+    flex: 1; /* O texto ocupa o máximo de espaço possível */
+    font-size: 2vw;
+}
+
+.icon {
+    width: 20vw; /* Ajuste conforme necessário */
+    height: auto; /* Mantém a proporção */
+    margin-left: 2vw; /* Espaço entre o texto e a imagem */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header {
+        font-size: 5vw;
+    }
+    .subtext {
+        font-size: 3vw;
+    }
+    .box {
+        font-size: 3.5vw;
+        padding: 5vw;
+    }
+    .icon {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 6vw;
+    }
+    .subtext {
+        font-size: 4vw;
+    }
+    .box {
+        font-size: 4.5vw;
+        padding: 6vw;
+    }
+    .icon {
+        font-size: 10vw;
+    }
+}
