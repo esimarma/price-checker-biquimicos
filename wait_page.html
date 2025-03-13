@@ -12,5 +12,17 @@
             <p>POR FAVOR AGUARDE <br> O PRODUTO SER LIDO...</p>
         </div>
     </div>
+
+    <script>
+        // Obtém o código de barras da URL e redireciona após 1 segundo
+        const params = new URLSearchParams(window.location.search);
+        const barcode = params.get("codigo");
+
+        setTimeout(() => {
+            if (barcode) {
+                window.location.href = "mostrar_artigo.php?codigo=" + encodeURIComponent(barcode);
+            }
+        }, 1000);
+    </script>
 </body>
 </html>

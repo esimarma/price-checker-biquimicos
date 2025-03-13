@@ -2,34 +2,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f5f5f5;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     height: 100vh;
-    padding: 5vw;
+    background-color: #f5f5f5; /* Adiciona um fundo claro para contraste */
 }
 
 .container {
     width: 95%;
-    max-width: 95%;
+    height: 95%;
     background: white;
     padding: 1vw;
     padding-top: 3vw;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
 }
 
 .header {
     color: #008299;
     font-size: 2.5vw;
     font-weight: bold;
-    margin-top: 2vw;
+    margin-top: 5vw;
+    
 }
 
 .subtext {
@@ -43,8 +46,9 @@ body {
         url('Imagens/fundo.svg') no-repeat center center, /* Camada do SVG */
         #008299; /* Cor de fundo abaixo da imagem */
     color: white;
-    padding: 6vw;
-    margin-top: 6vw;
+    padding: 8vw; /* Aumenta o tamanho interno */
+    min-height: 30vh; /* Garante que fique maior */
+    margin-top: auto;
     border-radius: 15px;
 }
 

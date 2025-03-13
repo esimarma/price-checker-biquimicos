@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Artigo</title>
-    <link rel="stylesheet" href="style.css"> <!-- Importa o CSS -->
-</head>
-<body>
-    <ol>
-        <li><a href="home_page.html">home page</a></li>
-    </ol>
-    
-    <div class="container">
-        <h2>Buscar Artigo</h2>
-        <form action="mostrar_artigo.php" method="GET">
-            <label for="codigo">Código do Artigo:</label>
-            <input type="text" id="codigo" name="codigo" required>
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-
-    <h2>Passe Código de Barras</h2>
-    <p id="output">Aguardando leitura...</p>
-
-    <script>
-        let barcode = "";
-        let timeout = null;
-    
-        document.addEventListener("keydown", function(event) {
-            if (timeout) {
-                clearTimeout(timeout);
-            }
-    
-            // Verifica se a tecla pressionada é um número ou letra
-            if (event.key.length === 1) {
-                barcode += event.key;
-            }
-    
-            // Timeout para detectar fim do código (normalmente um leitor termina com "Enter")
-            timeout = setTimeout(() => {
-                if (barcode.length > 3) { // Evita capturar teclas aleatórias
-                    console.log("Código de barras lido:", barcode);
-                    
-                    // Redireciona para a página de resultado com o código lido
-                    window.location.href = "mostrar_artigo.php?codigo=" + encodeURIComponent(barcode);
-    
-                    // Resetar o código lido
-                    barcode = "";
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leitor de Produtos</title>
+        <link rel="stylesheet" href="home_page.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">LEITOR DE PRODUTOS</div>
+            <div class="subtext">É cliente? Use o cartão</div>
+            <div class="box">
+                <div class="content">
+                    <div class="text">
+                        <p>ACEDA AO <strong>PREÇO</strong> E <strong>DETALHES</strong> DE UM PRODUTO RAPIDAMENTE</p>
+                        <p>AO PASSAR O PRODUTO PELO <strong>LEITOR</strong></p>
+                    </div>
+                    <img src="Imagens/leitor_icon.svg" alt="Ícone do leitor" class="icon">
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            let barcode = "";
+            let timeout = null;
+        
+            document.addEventListener("keydown", function(event) {
+                if (timeout) {
+                    clearTimeout(timeout);
                 }
-            }, 100); // Pequeno atraso para detectar o final da leitura
-        });
-    </script>
-</body>
+        
+                if (event.key.length === 1) {
+                    barcode += event.key;
+                }
+        
+                timeout = setTimeout(() => {
+                    if (barcode.length > 3) {
+                        console.log("Código de barras lido:", barcode);
+        
+                        // Redireciona para a página de espera, passando o código via URL
+                        window.location.href = "wait_page.html?codigo=" + encodeURIComponent(barcode);
+        
+                        barcode = "";
+                    }
+                }, 100);
+            });
+        </script>
+    </body>
 </html>
