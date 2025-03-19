@@ -31,6 +31,7 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
             <div class="info">
                 <h2><?= htmlspecialchars($artigo['nome']) ?></h2>
                 <p><?= htmlspecialchars($artigo['familia']) ?></p>
+                <p><?= intval($artigo['existencia']) ?></p>
             </div>
             <div class="image">
                 <img src="<?= htmlspecialchars($imagemFinal) ?>" alt="Imagem do artigo">

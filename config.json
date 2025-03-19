@@ -1,8 +1,9 @@
 {
     "serverName": "PC_DA_MARISA\\SQL",
-    "database": "BIQ",
+    "database": "BIQ2",
     "username": "sa",
     "password": "123456789",
     "linhaPreco": 4,
+    "codigoArmazem": "1",
     "caminhoImagens": "/price-checker-biquimicos/imagens/"
 }
