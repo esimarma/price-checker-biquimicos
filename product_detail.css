@@ -11,24 +11,22 @@ body {
     align-items: center;
     text-align: center;
     height: 100vh;
-    background-color: #f5f5f5; /* Adiciona um fundo claro para contraste */
+    background-color: #f5f5f5;
 }
 
 .container {
-    width: 95%;
-    height: 95%;
+    position: relative;
+    width: 95vw;
+    height: 95vh;
     background: white;
-    padding: 1vw;
-    padding-top: 3vw;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-    display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .info {
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: bold;
     text-align: left;
     margin-left: 4vw;
@@ -38,30 +36,94 @@ body {
     color: #1d93a5;
     font-size: 2.5vw;
     font-weight: bold;
+    margin-top: 3vw;
+}
+
+.stock p{
+    font-size: 1.5vw;
+}
+
+.image_pvp {
     margin-top: 5vw;
+    display: flex;
+    gap: 10px;
+    margin-left: 4vw;
+    flex-wrap: wrap;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    aspect-ratio: 16/9; /* Mantém uma proporção fixa */
+}
+
+.image img {
+    width: 70%;
+    height: 100%;
+    object-fit: contain; /* Ajusta sem cortes */
+}
+
+.pvp {
+    width: 30%;
+    display: inline-block;
 }
 
 .price {
-    font-size: 60px;
+    display: block;
+    text-align: right;
+    font-size: 10vw;
     font-weight: bold;
     color: black;
 }
 
-.price span {
-    font-size: 30px;
-    vertical-align: top;
+.unvenda {
+    font-size: 2vw;
+    color: #1d93a5;
+    font-weight: bold;
+    display: block;
+    text-align: right;
 }
 
-.image {
-    margin-bottom: 5vw;
-    display: flex; 
-    align-items: center;
-    gap: 10px;
-    margin-left: 4vw
+.logo {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+    width: 15vw;
+    max-width: 200px;
 }
 
-.image img {
-    height: 400px; /* Ajuste o tamanho da imagem */
-    width: auto;
+.logo img {
+    width: 100%;
+    height: auto;
 }
 
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .info {
+        font-size: 5vw;
+        margin-left: 2vw;
+    }
+    .info h2 {
+        font-size: 4vw;
+        margin-top: 3vw;
+    }
+    .image_pvp {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+    .image, .pvp {
+        width: 90%;
+        text-align: center;
+    }
+    .price {
+        font-size: 15vw;
+    }
+    .unvenda {
+        font-size: 4vw;
+    }
+    .logo {
+        width: 25vw;
+    }
+}

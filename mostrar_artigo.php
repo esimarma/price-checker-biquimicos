@@ -30,13 +30,26 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
         <div class="container">
             <div class="info">
                 <h2><?= htmlspecialchars($artigo['nome']) ?></h2>
-                <p><?= htmlspecialchars($artigo['familia']) ?></p>
-                <p><?= intval($artigo['existencia']) ?></p>
+                <div class="family">
+                    <p><?= htmlspecialchars($artigo['familia']) ?></p>
+                </div>
+                <div class="stock">
+                    <p><?= intval($artigo['existencia']) ?></p>
+                </div>
             </div>
-            <div class="image">
-                <img src="<?= htmlspecialchars($imagemFinal) ?>" alt="Imagem do artigo">
-                <p class="price"><?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€</p>
-                <p><?= htmlspecialchars($artigo['unvenda']) ?></p>
+            <div class="image_pvp">
+                <div class="image">
+                    <img src="<?= htmlspecialchars($imagemFinal) ?>" alt="Imagem do artigo">
+                </div>
+                <div class="pvp">
+                    <p class="price">
+                        <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€
+                    </p>
+                    <p class="unvenda"><?= htmlspecialchars($artigo['unvenda']) ?></p>
+                </div>
+                <div class="logo">
+                    <img src="<?= htmlspecialchars($config['caminhoImagens'] . "logo.svg") ?>" alt="Logo">
+                </div>
             </div>
         </div>
         
