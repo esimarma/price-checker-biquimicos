@@ -69,10 +69,23 @@ body {
     display: inline-block;
 }
 
+.price_iva {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Mantém os elementos alinhados na base */
+    gap: 5px; /* Espaço entre preço e IVA */
+    flex-wrap: nowrap; /* Garante que ficam na mesma linha */
+}
+
 .price {
-    display: block;
-    text-align: right;
     font-size: 10vw;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+}
+
+.iva {
+    font-size: 2vw;
     font-weight: bold;
     color: black;
 }

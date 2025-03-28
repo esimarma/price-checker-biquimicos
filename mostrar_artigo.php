@@ -13,6 +13,12 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Produto</title>
     <link rel="stylesheet" href="product_detail.css">
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "index.html"; // Redireciona para index.html após 5 segundos
+        }, 5000);
+    </script>
 </head>
 <body>
     <?php if ($artigo): ?>
@@ -42,9 +48,10 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
                     <img src="<?= htmlspecialchars($imagemFinal) ?>" alt="Imagem do artigo">
                 </div>
                 <div class="pvp">
-                    <p class="price">
-                        <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€
-                    </p>
+                    <div class="price_iva">
+                        <span class="price"> <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€</span>
+                        <span class="iva"> C/IVA</span>
+                    </div>
                     <p class="unvenda"><?= htmlspecialchars($artigo['unvenda']) ?></p>
                 </div>
                 <div class="logo">
@@ -52,7 +59,7 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
                 </div>
             </div>
         </div>
-        
+
     <?php else: ?>
         <p>Artigo não encontrado!</p>
     <?php endif; ?>
