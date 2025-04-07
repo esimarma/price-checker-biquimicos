@@ -4,6 +4,11 @@ include 'db/queries.php';
 
 $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : null;
 $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
+
+// Se o artigo não for encontrado, redireciona para not_found_page.html
+if (!$artigo) {
+    header("Location: not_found_page.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +21,8 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
 
     <script>
         setTimeout(function() {
-            window.location.href = "index.html"; // Redireciona para index.html após 5 segundos
-        }, 5000);
+            window.location.href = "index.html"; // Redireciona para index.html após 10 segundos
+        }, 10000);
     </script>
 </head>
 <body>

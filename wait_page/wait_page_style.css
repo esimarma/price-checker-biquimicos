@@ -20,7 +20,7 @@ body {
     align-items: center;
     text-align: center;
     background: 
-        url('Imagens/fundo_logo.svg') no-repeat center center / cover,  
+        url('../Imagens/fundo_logo.svg') no-repeat center center / cover,  
         #1d93a5;
     width: 95%;
     height: 95%;

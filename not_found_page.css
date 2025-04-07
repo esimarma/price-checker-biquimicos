@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Alinha a imagem acima do texto */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: 
+        url('Imagens/fundo.svg') no-repeat center center / cover,  
+        #1d93a5;
+    width: 95%;
+    height: 95%;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.image img {
+    max-width: 12vw;
+    height: auto;
+    margin-bottom: 4vw;
+}
+
+.mensagem {
+    font-size: 2vw;
+    font-weight: bold;
+    color: white;
+}

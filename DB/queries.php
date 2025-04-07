@@ -16,15 +16,14 @@
                     c.pvpciva, 
                     c.pvpsiva, 
                     b.imagem,
-                    s.existencia, 
-                    s.armazem
-                 FROM wgccodbarras a 
-                 LEFT JOIN wgcartigos b ON a.artigo = b.codigo
-                 LEFT JOIN wgcartigoslinhasprecos c ON b.codigo = c.artigo
-                 LEFT JOIN wgcartarmazens s ON b.codigo = s.artigo 
-                 WHERE b.codigo = :codigo 
-                 AND c.linha = :linha
-                 AND s.armazem = :armazem";
+                ISNULL(s.existencia, 0) as 'existencia', 
+                ISNULL(s.armazem,0) as 'armazem'
+                FROM wgcartigos b
+                LEFT JOIN wgccodbarras a  ON a.artigo = b.codigo
+                LEFT JOIN wgcartigoslinhasprecos c ON b.codigo = c.artigo
+                LEFT JOIN wgcartarmazens s ON b.codigo = s.artigo AND (s.armazem = :armazem OR s.armazem IS NULL)
+                WHERE b.codigo = :codigo 
+                AND c.linha = :linha";
 
         $stmt1 = $conn->prepare($sql1);
         $stmt1->execute([
@@ -36,23 +35,23 @@
 
         // Se não encontrou, tenta a segunda query (busca pelo código de barras + stock de um armazém específico)
         if (!$artigo) {
-            $sql2 = "SELECT b.codigo, 
-                            b.nome, 
-                            b.iva, 
-                            b.familia, 
-                            b.unvenda, 
-                            c.pvpciva, 
-                            c.pvpsiva, 
-                            b.imagem,
-                            s.existencia, 
-                            s.armazem
-                     FROM wgccodbarras a 
-                     INNER JOIN wgcartigos b ON a.artigo = b.codigo
-                     LEFT JOIN wgcartigoslinhasprecos c ON b.codigo = c.artigo
-                     LEFT JOIN wgcartarmazens s ON b.codigo = s.artigo 
-                     WHERE a.codbarras = :codigo 
-                     AND c.linha = :linha
-                     AND s.armazem = :armazem";
+            $sql2 = "SELECT TOP(1) 
+                        b.codigo, 
+                        b.nome, 
+                        b.iva, 
+                        b.familia, 
+                        b.unvenda, 
+                        c.pvpciva, 
+                        c.pvpsiva, 
+                        b.imagem,
+                    ISNULL(s.existencia, 0) as 'existencia', 
+                    ISNULL(s.armazem,0) as 'armazem'
+                    FROM wgcartigos b
+                    LEFT JOIN wgccodbarras a  ON a.artigo = b.codigo
+                    LEFT JOIN wgcartigoslinhasprecos c ON b.codigo = c.artigo
+                    LEFT JOIN wgcartarmazens s ON b.codigo = s.artigo AND (s.armazem = :armazem OR s.armazem IS NULL)
+                    WHERE a.codbarras = :codigo 
+                    AND c.linha = :linha";
 
             $stmt2 = $conn->prepare($sql2);
             $stmt2->execute([
