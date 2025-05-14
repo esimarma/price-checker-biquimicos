@@ -39,8 +39,15 @@ body {
     margin-top: 3vw;
 }
 
-.stock p{
-    font-size: 1.5vw;
+.stock {
+    position: absolute;
+    bottom: 10%;  /* Posição relativa ao logo */
+    right: 0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 1vw;
+    font-weight: bold;
+    z-index: 2; /* Fica por cima do logo */
 }
 
 .image_pvp {
@@ -72,20 +79,20 @@ body {
 .price_iva {
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Mantém os elementos alinhados na base */
-    gap: 5px; /* Espaço entre preço e IVA */
-    flex-wrap: nowrap; /* Garante que ficam na mesma linha */
+    align-items: baseline; /* Muda aqui */
+    gap: 5px;
+    flex-wrap: nowrap;
 }
 
 .price {
-    font-size: 10vw;
+    font-size: 8vw;
     font-weight: bold;
     color: black;
     text-align: right;
 }
 
 .iva {
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
     color: black;
 }
@@ -100,15 +107,21 @@ body {
 
 .logo {
     position: absolute;
-    bottom: 2vh;
+    bottom: 0vh;
     right: 2vw;
-    width: 15vw;
-    max-width: 200px;
+    width: 10vw; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .logo img {
+    position: relative;
+    top: -3vh; 
     width: 100%;
     height: auto;
+    display: block;
+    z-index: 1;
 }
 
 /* Ajustes para telas menores */

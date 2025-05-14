@@ -36,9 +36,20 @@ body {
 }
 
 .subtext {
-    color: #666;
-    font-size: 1.5vw;
-    margin-top: 1vw;
+    background-color: #515151;
+    color: white;
+    padding: 10px 18px;      /* botão maior */
+    border-radius: 18px;
+    font-family: sans-serif;
+    font-size: 1vw; /* um pouco maior */
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    margin: 2vw auto;
+    margin-top: 7vw;
+    text-decoration: none; /* tira o sublinhado */
 }
 
 .box {
