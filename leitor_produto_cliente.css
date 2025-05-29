@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 95%;
+    height: 95%;
+    background: white;
+    padding: 1vw;
+    padding-top: 3vw;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    color: #4D5252;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-top: 5vw;
+}
+
+.welcome {
+    font-size: 1.3vw;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 0.5vw;
+    margin-top: 10vw;
+    text-align: left;
+    padding-left: 2vw;
+}
+
+.box {
+    background:
+        url('Imagens/fundo.svg') no-repeat center center / cover,
+        #4D5252;
+    color: white;
+    padding: 8vw;
+    min-height: 30vh;
+    border-radius: 15px;
+}
+
+.box strong {
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text {
+    flex: 1;
+    font-size: 2vw;
+}
+
+.icon {
+    width: 20vw;
+    height: auto;
+    margin-left: 2vw;
+}
+
+@media (max-width: 768px) {
+    .header {
+        font-size: 5vw;
+    }
+    .box {
+        font-size: 3.5vw;
+        padding: 5vw;
+    }
+    .icon {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 6vw;
+    }
+    .box {
+        font-size: 4.5vw;
+        padding: 6vw;
+    }
+    .icon {
+        font-size: 10vw;
+    }
+}
+
+/* === POPUP CSS === */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-box {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    font-size: 1.4rem;
+    max-width: 90%;
+}
+
+.popup-text {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.popup-text span {
+    color: red;
+    font-size: 1rem;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#yes-btn, #no-btn {
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#yes-btn {
+    background-color: #555;
+    color: white;
+}
+
+#no-btn {
+    background-color: red;
+    color: white;
+}
+
+#yes-btn:hover {
+    background-color: #333;
+}
+
+#no-btn:hover {
+    background-color: #b30000;
+}

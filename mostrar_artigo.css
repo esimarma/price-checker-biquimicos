@@ -105,6 +105,14 @@ body {
     text-align: right;
 }
 
+.precoun {
+    font-size: 2.5vw;
+    color: #434343;
+    font-weight: bold;
+    display: block;
+    text-align: right;
+}
+
 .logo {
     position: absolute;
     bottom: 0vh;

@@ -7,20 +7,34 @@
     <link rel="stylesheet" href="wait_page_style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="mensagem">
             <p>POR FAVOR AGUARDE <br> O PRODUTO SER LIDO...</p>
         </div>
     </div>
 
     <script>
-        // Obtém o código de barras da URL e redireciona após 1 segundo
+        // Lê os parâmetros da URL
         const params = new URLSearchParams(window.location.search);
         const barcode = params.get("codigo");
+        const tipo = params.get("tipo"); // tipo = "cliente" ou outro
 
+        // Muda a cor de fundo com base no tipo
+        const container = document.getElementById("container");
+        if (tipo === "cliente") {
+            container.style.backgroundColor = "#4D5252";
+        } else {
+            container.style.backgroundColor = "#1d93a5"; 
+        }
+
+        // Redireciona após 1 segundo
         setTimeout(() => {
             if (barcode) {
-                window.location.href = "../mostrar_artigo.php?codigo=" + encodeURIComponent(barcode);
+                if (tipo === "cliente") {
+                    window.location.href = "../mostrar_artigo_cliente.php?codigo=" + encodeURIComponent(barcode);
+                } else {
+                    window.location.href = "../mostrar_artigo.php?codigo=" + encodeURIComponent(barcode);
+                }
             }
         }, 1000);
     </script>

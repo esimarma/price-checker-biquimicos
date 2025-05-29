@@ -32,24 +32,32 @@ body {
     font-size: 2.5vw;
     font-weight: bold;
     margin-top: 5vw;
-    
 }
 
-.subtext {
+.nif-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8vw 2vw 1vw 2vw;
+}
+
+.nif-label {
+    font-size: 1.3vw;
+    font-weight: bold;
+    color: #000;
+}
+
+.nif-button {
     background-color: #515151;
     color: white;
-    padding: 10px 18px;      /* botão maior */
-    border-radius: 18px;
-    font-family: sans-serif;
-    font-size: 1vw; /* um pouco maior */
-    display: inline-block;
-    text-align: center;
+    border: none;
+    padding: 0.5vw 1vw;
+    font-size: 1vw;
+    border-radius: 20px;
+    cursor: pointer;
     white-space: nowrap;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    cursor: pointer;
-    margin: 2vw auto;
-    margin-top: 7vw;
-    text-decoration: none; /* tira o sublinhado */
+    font-weight: bold;
 }
 
 .box {
@@ -84,12 +92,78 @@ body {
     margin-left: 2vw; 
 }
 
-/* Responsividade */
+/* === POPUP CSS === */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2vw;
+    width: 50vw;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popup-text {
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-bottom: 1vw;
+}
+
+#nifInput {
+    width: 80%;
+    padding: 0.5vw;
+    font-size: 1vw;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 1.5vw;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.popup-buttons button {
+    padding: 0.5vw 1.5vw;
+    font-size: 1vw;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+#nif-cancelar {
+    background-color: red;
+}
+
+#nif-confirmar {
+    background-color: black;
+}
 @media (max-width: 768px) {
     .header {
         font-size: 5vw;
     }
-    .subtext {
+    .nif-section {
+        font-size: 3vw;
+    }
+    #nif-input {
+        font-size: 3vw;
+        width: 40vw;
+    }
+    .nif-input-group button {
         font-size: 3vw;
     }
     .box {
@@ -105,7 +179,14 @@ body {
     .header {
         font-size: 6vw;
     }
-    .subtext {
+    .nif-section {
+        font-size: 4vw;
+    }
+    #nif-input {
+        font-size: 4vw;
+        width: 50vw;
+    }
+    .nif-input-group button {
         font-size: 4vw;
     }
     .box {

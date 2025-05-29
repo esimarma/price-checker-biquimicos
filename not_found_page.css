@@ -16,13 +16,12 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column; /* Alinha a imagem acima do texto */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: 
-        url('Imagens/fundo.svg') no-repeat center center / cover,  
-        #1d93a5;
+    background:
+        url('Imagens/fundo.svg') no-repeat center center / cover;
     width: 95%;
     height: 95%;
     padding: 2vw;

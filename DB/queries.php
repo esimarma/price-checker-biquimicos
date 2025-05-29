@@ -13,6 +13,9 @@
                     artigos.iva, 
                     artigos.familia, 
                     artigos.unvenda, 
+                    artigos.CapacidadeUn,
+                    artigos.PrecoPor,
+                    artigos.descmax,
                     linhasprecos.pvpciva, 
                     linhasprecos.pvpsiva, 
                     artigos.imagem,
@@ -40,7 +43,10 @@
                         artigos.nome, 
                         artigos.iva, 
                         artigos.familia, 
-                        artigos.unvenda, 
+                        artigos.unvenda,
+                        artigos.CapacidadeUn,
+                        artigos.PrecoPor,
+                        artigos.descmax,
                         linhasprecos.pvpciva, 
                         linhasprecos.pvpsiva, 
                         artigos.imagem,
@@ -65,17 +71,43 @@
         return $artigo; // Retorna os dados do artigo (com stock do armazém específico) ou null se não encontrar
     }
 
-    function getDescontoCliente($clienteId) {
+
+
+    function getDescontoCliente($tipo ,$clienteId) {
         global $conn;
     
-        $sql = "SELECT 
-                    terceiros.NumeroCliente,
-                    terceiros.Nome,
-                    terceiros.Zona,
-                    escontos.DESC1 AS Desconto
-                FROM Wgcterceiros terceiros
-                JOIN Wgcdescontos escontos ON terceiros.Zona = escontos.Zona
-                WHERE terceiros.NumeroCliente = :clienteId";
+        if($tipo === "nif"){
+            $sql = "SELECT 
+                t.codigo,
+                t.nome,
+                t.zona,
+                t.ncontrib,
+                d.DESC1 AS Desconto
+            FROM wgcterceiros t
+            LEFT JOIN (
+                SELECT zona, MAX(DESC1) AS DESC1
+                FROM wgcdescontos
+                WHERE zona IS NOT NULL AND zona <> ''
+                GROUP BY zona
+            ) d ON t.zona = d.zona
+            WHERE t.ncontrib = :clienteId";
+        }
+        else{
+            $sql = "SELECT 
+                t.codigo,
+                t.nome,
+                t.zona,
+                t.ncontrib,
+                d.DESC1 AS Desconto
+            FROM wgcterceiros t
+            LEFT JOIN (
+                SELECT zona, MAX(DESC1) AS DESC1
+                FROM wgcdescontos
+                WHERE zona IS NOT NULL AND zona <> ''
+                GROUP BY zona
+            ) d ON t.zona = d.zona
+            WHERE t.NumeroCliente = :clienteId";
+        }
     
         $stmt = $conn->prepare($sql);
         $stmt->execute([':clienteId' => $clienteId]);

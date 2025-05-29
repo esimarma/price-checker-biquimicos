@@ -7,9 +7,24 @@
     <link rel="stylesheet" href="not_found_page.css">
 
     <script>
+        // Redireciona após 7 segundos
         setTimeout(function() {
-            window.location.href = "index.html"; // Redireciona para index.html após 7 segundos
+            window.location.href = "index.php";
         }, 7000);
+
+        // Muda cor de fundo com base no parâmetro tipo
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const tipo = params.get("tipo"); // cliente ou outro
+
+            const container = document.querySelector(".container");
+            if (tipo === "cliente") {
+                container.style.backgroundColor = "#4D5252"; //cinzento
+            }
+            else {
+                container.style.backgroundColor = "#1d93a5"; // azul
+            }
+        };
     </script>
 </head>
 <body>

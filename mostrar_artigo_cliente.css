@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.container {
+    position: relative;
+    width: 95vw;
+    height: 95vh;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info {
+    background: 
+        url('Imagens/fundo.svg') no-repeat center center / cover, 
+        #4D5252;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.info h2 {
+    color: white;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-top: 3vw;
+    margin-left: 2vw;
+}
+
+.family {
+    color: lightgrey;
+    margin-left: 2vw;
+    font-size: 1.5vw;
+}
+
+.stock {
+    position: absolute;
+    bottom: 10%;  /* Posição relativa ao logo */
+    right: 0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 1vw;
+    font-weight: bold;
+    z-index: 2; /* Fica por cima do logo */
+}
+
+.image_pvp {
+    margin-top: 5vw;
+    display: flex;
+    gap: 10px;
+    margin-left: 4vw;
+    flex-wrap: wrap;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    aspect-ratio: 16/9; /* Mantém uma proporção fixa */
+}
+
+.image img {
+    width: 70%;
+    height: 100%;
+    object-fit: contain; /* Ajusta sem cortes */
+}
+
+.pvp {
+    display: inline-block;
+}
+
+.price_iva {
+    display: flex;
+    justify-content: center;
+    align-items: baseline; /* Muda aqui */
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.price {
+    font-size: 8vw;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+}
+
+.iva {
+    font-size: 1vw;
+    font-weight: bold;
+    color: black;
+}
+
+.unvenda {
+    font-size: 2vw;
+    color: #4D5252;
+    font-weight: bold;
+    display: block;
+    text-align: right;
+}
+.precoun {
+    font-size: 2.5vw;
+    color: #434343;
+    font-weight: bold;
+    display: block;
+    text-align: right;
+}
+
+.logo {
+    position: absolute;
+    bottom: 0vh;
+    right: 2vw;
+    width: 10vw; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.logo img {
+    position: relative;
+    top: -3vh; 
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 1;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .info {
+        font-size: 5vw;
+        margin-left: 2vw;
+    }
+    .info h2 {
+        font-size: 4vw;
+        margin-top: 3vw;
+    }
+    .image_pvp {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+    .image, .pvp {
+        width: 90%;
+        text-align: center;
+    }
+    .price {
+        font-size: 15vw;
+    }
+    .unvenda {
+        font-size: 4vw;
+    }
+    .logo {
+        width: 25vw;
+    }
+}

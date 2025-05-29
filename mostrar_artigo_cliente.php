@@ -7,9 +7,24 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
 
 // Se o artigo não for encontrado, redireciona para not_found_page.html
 if (!$artigo) {
-    header("Location: not_found_page.html?tipo=default");
+    header("Location: not_found_page.html?tipo=cliente");
+    exit;
+}
+else{
+    session_start();
+    if (!isset($_SESSION['cliente'])) {
+        header("Location: not_found_page.html?tipo=nif");
+        exit;
+    }
+
+    $cliente = $_SESSION['cliente']; 
+    
+    $desconto = min($artigo['descmax'], $cliente['Desconto']);
+
+    $precoComDesconto = $artigo['pvpsiva'] * (1 - ($desconto / 100));
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -17,11 +32,11 @@ if (!$artigo) {
         <meta charset="UTF-8">
         <meta name="viewport" content="wwidth=device-width, initial-scale=1.0">
         <title>Detalhes do Produto</title>
-        <link rel="stylesheet" href="mostrar_artigo.css">
+        <link rel="stylesheet" href="mostrar_artigo_cliente.css">
 
         <script>
            /* setTimeout(function() {
-                window.location.href = "index.php"; // Redireciona para index.php após 10 segundos
+                window.location.href = "leitor_produto_cliente.php"; // Redireciona para index.php após 10 segundos
             }, 10000);*/
         </script>
     </head>
@@ -39,9 +54,10 @@ if (!$artigo) {
 
                 $precoun = 0;
                 if ($artigo['PrecoPor'] === 'Kg' || $artigo['PrecoPor'] === 'Lt') {
-                    $precoun = ($artigo['pvpciva'] * 1000) / $artigo['CapacidadeUn'];
+                    $precoun = ($precoComDesconto * 1000) / $artigo['CapacidadeUn'];
+                    
                 } else if ($artigo['PrecoPor'] === 'Ud' || $artigo['PrecoPor'] === 'Dose') {
-                    $precoun = ($artigo['pvpciva'] * 1) / $artigo['CapacidadeUn'];
+                    $precoun = ($precoComDesconto * 1) / $artigo['CapacidadeUn'];
                 }
             ?>
 
@@ -58,8 +74,8 @@ if (!$artigo) {
                     </div>
                     <div class="pvp">
                         <div class="price_iva">
-                            <span class="price"> <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€</span>
-                            <span class="iva"> C/IVA (<?= number_format(intval($artigo['iva']))?>%)</span>
+                            <span class="price"> <?= number_format(floatval($precoComDesconto), 2, '.', '') ?>€</span>
+                            <span class="iva"> S/IVA </span>
                         </div>
                         <p class="unvenda"><?= htmlspecialchars($artigo['unvenda']) ?></p>
                         <p class="precoun"><?= number_format(floatval($precoun), 2, '.', '') ?>€ / <?= htmlspecialchars($artigo['PrecoPor']) ?></p>
@@ -70,9 +86,7 @@ if (!$artigo) {
                             <p><?= intval($artigo['existencia']) ?></p>
                         </div>
                     </div>
-                    
                 </div>
-            
             </div>
 
             
@@ -81,3 +95,4 @@ if (!$artigo) {
         <?php endif; ?>
     </body>
 </html>
+
