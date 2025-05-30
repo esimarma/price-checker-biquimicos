@@ -61,6 +61,9 @@ body {
 }
 
 .box {
+    display: flex; /* Importante: ativa o flex na box */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente se quiser */
     background: 
         url('Imagens/fundo.svg') no-repeat center center / cover, 
         #1d93a5;
@@ -71,14 +74,15 @@ body {
     border-radius: 15px;
 }
 
-.box strong {
-    font-weight: bold;
-}
-
 .content {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.box strong {
+    font-weight: bold;
 }
 
 .text {
