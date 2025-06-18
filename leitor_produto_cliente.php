@@ -15,9 +15,16 @@ $cliente = $_SESSION['cliente'];
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Leitor de Produtos</title>
         <link rel="stylesheet" href="leitor_produto_cliente.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
     <body>
         <div class="container">
+        <a href="logout.php" class="back-button" title="Terminar Sessão">
+            <svg xmlns="http://www.w3.org/2000/svg" class="back-icon" width="24" height="24" viewBox="0 0 512 512">
+                <path fill="#4D5252" d="M48,256c0,114.87,93.13,208,208,208s208-93.13,208-208S370.87,48,256,48,48,141.13,48,256Zm224-80.09L208.42,240H358v32H208.42L272,336.09,249.3,358.63,147.46,256,249.3,153.37Z"/>
+            </svg>
+        </a>
+            </a>
             <div class="header">LEITOR DE PRODUTOS</div>
             <div class="welcome">BEM-VINDO, <?php echo htmlspecialchars($cliente['nome']); ?></div>
             <div class="box">

@@ -5,5 +5,6 @@
     "password": "123456789",
     "linhaPreco": 4,
     "codigoArmazem": "1",
-    "caminhoImagens": "/price-checker-biquimicos/imagens/"
+    "caminhoImagens": "/price-checker-biquimicos/imagens/",
+    "sectores": ["PO1", "PO2", "PO3", "PO4"]
 }

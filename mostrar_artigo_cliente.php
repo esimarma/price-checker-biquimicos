@@ -21,7 +21,12 @@ else{
     
     $desconto = min($artigo['descmax'], $cliente['Desconto']);
 
-    $precoComDesconto = $artigo['pvpsiva'] * (1 - ($desconto / 100));
+    if($artigo['precoPromocaoSIva']){
+        $precoComDesconto = $artigo['precoPromocaoSIva'] * (1 - ($desconto / 100));
+    }
+    else{
+        $precoComDesconto = $artigo['pvpsiva'] * (1 - ($desconto / 100));
+    }
 }
 ?>
 
@@ -35,9 +40,9 @@ else{
         <link rel="stylesheet" href="mostrar_artigo_cliente.css">
 
         <script>
-           /* setTimeout(function() {
+            setTimeout(function() {
                 window.location.href = "leitor_produto_cliente.php"; // Redireciona para index.php após 10 segundos
-            }, 10000);*/
+            }, 10000);
         </script>
     </head>
     <body>
@@ -75,16 +80,16 @@ else{
                     <div class="pvp">
                         <div class="price_iva">
                             <span class="price"> <?= number_format(floatval($precoComDesconto), 2, '.', '') ?>€</span>
-                            <span class="iva"> S/IVA </span>
+                            <div class="tax-info">
+                                <span class="iva"> S/IVA </span>
+                                <?php if ($artigo['precoPromocao']) : ?>
+                                    <span class="desconto">C/Desconto</span>
+                                <?php endif; ?>
+                            </div>
                         </div>
+                        
                         <p class="unvenda"><?= htmlspecialchars($artigo['unvenda']) ?></p>
                         <p class="precoun"><?= number_format(floatval($precoun), 2, '.', '') ?>€ / <?= htmlspecialchars($artigo['PrecoPor']) ?></p>
-                    </div>
-                    <div class="logo">
-                        <img src="<?= htmlspecialchars($config['caminhoImagens'] . "logo.svg") ?>" alt="Logo">
-                        <div class="stock">
-                            <p><?= intval($artigo['existencia']) ?></p>
-                        </div>
                     </div>
                 </div>
             </div>

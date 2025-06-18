@@ -21,8 +21,9 @@ body {
     background: white;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .info {
@@ -39,17 +40,6 @@ body {
     margin-top: 3vw;
 }
 
-.stock {
-    position: absolute;
-    bottom: 10%;  /* Posição relativa ao logo */
-    right: 0;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 1vw;
-    font-weight: bold;
-    z-index: 2; /* Fica por cima do logo */
-}
-
 .image_pvp {
     margin-top: 5vw;
     display: flex;
@@ -62,26 +52,27 @@ body {
     display: flex;
     justify-content: center;
     width: 50%;
-    aspect-ratio: 16/9; /* Mantém uma proporção fixa */
+    aspect-ratio: 16/9;
 }
 
 .image img {
     width: 70%;
     height: 100%;
-    object-fit: contain; /* Ajusta sem cortes */
+    object-fit: contain;
 }
 
 .pvp {
-    width: 30%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .price_iva {
     display: flex;
     justify-content: center;
-    align-items: baseline; /* Muda aqui */
-    gap: 5px;
-    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .price {
@@ -91,9 +82,18 @@ body {
     text-align: right;
 }
 
-.iva {
+.tax-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 1vw;
     font-weight: bold;
+    color: black;
+    line-height: 1.2;
+    margin-top: 7.8vw;
+}
+
+.tax-info {
     color: black;
 }
 
@@ -101,7 +101,6 @@ body {
     font-size: 2vw;
     color: #1d93a5;
     font-weight: bold;
-    display: block;
     text-align: right;
 }
 
@@ -109,55 +108,83 @@ body {
     font-size: 2.5vw;
     color: #434343;
     font-weight: bold;
-    display: block;
     text-align: right;
 }
 
 .logo {
     position: absolute;
-    bottom: 0vh;
+    bottom: 2vh;
     right: 2vw;
-    width: 10vw; 
+    width: 10vw;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
 .logo img {
-    position: relative;
-    top: -3vh; 
     width: 100%;
     height: auto;
     display: block;
     z-index: 1;
 }
 
-/* Ajustes para telas menores */
+.stock {
+    margin-top: 0.5vh;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     .info {
         font-size: 5vw;
         margin-left: 2vw;
     }
+
     .info h2 {
         font-size: 4vw;
         margin-top: 3vw;
     }
+
     .image_pvp {
         flex-direction: column;
         align-items: center;
         margin-left: 0;
     }
+
     .image, .pvp {
         width: 90%;
         text-align: center;
+        align-items: center;
     }
+
     .price {
         font-size: 15vw;
     }
+
     .unvenda {
         font-size: 4vw;
     }
+
+    .precoun {
+        font-size: 5vw;
+    }
+
+    .tax-info {
+        font-size: 3vw;
+    }
+
     .logo {
         width: 25vw;
+        right: 5vw;
+        bottom: 3vh;
+    }
+
+    .stock {
+        font-size: 3vw;
     }
 }

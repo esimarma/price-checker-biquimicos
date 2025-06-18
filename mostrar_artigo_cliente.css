@@ -103,40 +103,50 @@ body {
     text-align: right;
 }
 
-.iva {
+.tax-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 1vw;
     font-weight: bold;
     color: black;
+    line-height: 1.2;
+    margin-top: 7vw;
+}
+
+.tax-info .iva {
+    color: black;
+}
+
+.tax-info .desconto {
+    color: #e74c3c;
 }
 
 .unvenda {
     font-size: 2vw;
-    color: #4D5252;
+    color: #1d93a5;
     font-weight: bold;
-    display: block;
     text-align: right;
 }
+
 .precoun {
     font-size: 2.5vw;
     color: #434343;
     font-weight: bold;
-    display: block;
     text-align: right;
 }
 
 .logo {
     position: absolute;
-    bottom: 0vh;
+    bottom: 2vh;
     right: 2vw;
-    width: 10vw; 
+    width: 10vw;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
 .logo img {
-    position: relative;
-    top: -3vh; 
     width: 100%;
     height: auto;
     display: block;

@@ -8,7 +8,7 @@ include 'db/queries.php';
 // Processa NIF enviado por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
     $nif = trim($_POST['nif']);
-    $cliente = getDescontoCliente('nif', $nif); // ou outra função que devolva o cliente
+    $cliente = getDescontoCliente($nif); // ou outra função que devolva o cliente
 
     if ($cliente) {
         $_SESSION['cliente'] = $cliente;
@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
         exit;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
             }
 
             timeout = setTimeout(() => {
-                if (barcode.length > 3) {
-                    window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
+                if (barcode.length > 1) {
+                    if (barcode.length < 13) {
+                        window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
+                    } else {
+                        window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
+                    }
                     barcode = "";
                 }
             }, 100);

@@ -38,7 +38,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8vw 2vw 1vw 2vw;
+    margin: 14vw 2vw 1vw 2vw;
 }
 
 .nif-label {
@@ -70,7 +70,6 @@ body {
     color: white;
     padding: 8vw;
     min-height: 30vh;
-    margin-top: auto;
     border-radius: 15px;
 }
 

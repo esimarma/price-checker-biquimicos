@@ -9,6 +9,14 @@ $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
 if (!$artigo) {
     header("Location: not_found_page.html?tipo=default");
 }
+else{
+    if($artigo['precoPromocao']){
+        $precoFinal = $artigo['precoPromocao'];
+    }
+    else{
+        $precoFinal = $artigo['pvpciva'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +28,9 @@ if (!$artigo) {
         <link rel="stylesheet" href="mostrar_artigo.css">
 
         <script>
-           /* setTimeout(function() {
+            setTimeout(function() {
                 window.location.href = "index.php"; // Redireciona para index.php após 10 segundos
-            }, 10000);*/
+            }, 10000);
         </script>
     </head>
     <body>
@@ -39,9 +47,9 @@ if (!$artigo) {
 
                 $precoun = 0;
                 if ($artigo['PrecoPor'] === 'Kg' || $artigo['PrecoPor'] === 'Lt') {
-                    $precoun = ($artigo['pvpciva'] * 1000) / $artigo['CapacidadeUn'];
+                    $precoun = ($precoFinal * 1000) / $artigo['CapacidadeUn'];
                 } else if ($artigo['PrecoPor'] === 'Ud' || $artigo['PrecoPor'] === 'Dose') {
-                    $precoun = ($artigo['pvpciva'] * 1) / $artigo['CapacidadeUn'];
+                    $precoun = ($precoFinal * 1) / $artigo['CapacidadeUn'];
                 }
             ?>
 
@@ -58,21 +66,27 @@ if (!$artigo) {
                     </div>
                     <div class="pvp">
                         <div class="price_iva">
-                            <span class="price"> <?= number_format(floatval($artigo['pvpciva']), 2, '.', '') ?>€</span>
-                            <span class="iva"> C/IVA (<?= number_format(intval($artigo['iva']))?>%)</span>
+                            <span class="price"> <?= number_format(floatval($precoFinal), 2, '.', '') ?>€</span>
+                            <div class="tax-info">
+                                <span class="iva">C/IVA (<?= number_format(intval($artigo['iva'])) ?>%)</span>
+                                <?php if ($artigo['precoPromocao']) : ?>
+                                    <span class="desconto">C/Desconto</span>
+                                <?php endif; ?>
+                            </div>
                         </div>
+                        
                         <p class="unvenda"><?= htmlspecialchars($artigo['unvenda']) ?></p>
                         <p class="precoun"><?= number_format(floatval($precoun), 2, '.', '') ?>€ / <?= htmlspecialchars($artigo['PrecoPor']) ?></p>
                     </div>
-                    <div class="logo">
-                        <img src="<?= htmlspecialchars($config['caminhoImagens'] . "logo.svg") ?>" alt="Logo">
-                        <div class="stock">
-                            <p><?= intval($artigo['existencia']) ?></p>
-                        </div>
-                    </div>
-                    
                 </div>
-            
+
+                <!-- LOGO fora da estrutura da imagem e preço -->
+                <div class="logo">
+                    <img src="<?= htmlspecialchars($config['caminhoImagens'] . "logo.svg") ?>" alt="Logo">
+                    <div class="stock">
+                        <p><?= intval($artigo['existencia']) ?></p>
+                    </div>
+                </div>
             </div>
 
             

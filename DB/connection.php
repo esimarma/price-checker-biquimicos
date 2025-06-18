@@ -1,6 +1,6 @@
 <?php
     // Carregar o arquivo JSON e converter para um array associativo
-    $config = json_decode(file_get_contents('config.json'), true);
+    $config = json_decode(file_get_contents(__DIR__ . '/../config.json'), true);
 
     try {
         // Criar conexão PDO com SQL Server usando as configurações do config.php
