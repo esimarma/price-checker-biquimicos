@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
             }
 
             timeout = setTimeout(() => {
-                if (barcode.length > 1) {
+                if (event.key === "Enter") {
                     if (barcode.length < 13) {
                         window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
                     } else {

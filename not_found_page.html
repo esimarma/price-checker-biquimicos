@@ -24,7 +24,31 @@
             else {
                 container.style.backgroundColor = "#1d93a5"; // azul
             }
+
+            let barcode = "";
+            let timeout = null;
+
+            document.addEventListener("keydown", function(event) {
+
+                if (timeout) clearTimeout(timeout);
+
+                if (event.key.length === 1) {
+                    barcode += event.key;
+                }
+
+                timeout = setTimeout(() => {
+                    if (event.key === "Enter") {
+                        if ( barcode.length < 13 && tipo !=="cliente" ) {
+                            window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
+                        } else if( barcode.length >= 13) {
+                            window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=" + tipo;
+                        }
+                        barcode = "";
+                    }
+                }, 100);
+            });
         };
+
     </script>
 </head>
 <body>
@@ -37,5 +61,10 @@
                 <br> POR FAVOR REPORTE O PROBLEMA PARA UM DOS NOSSOS COLABORADORES.</p>
         </div>
     </div>
+
+    <script>
+
+    </script>
+    
 </body>
 </html>

@@ -35,7 +35,7 @@ else{
 <html lang="pt">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="wwidth=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Detalhes do Produto</title>
         <link rel="stylesheet" href="mostrar_artigo_cliente.css">
 
@@ -98,6 +98,28 @@ else{
         <?php else: ?>
             <p>Artigo não encontrado!</p>
         <?php endif; ?>
+
+        <script>
+            let barcode = "";
+            let timeout = null;
+    
+            document.addEventListener("keydown", function (event) {
+                if (timeout) clearTimeout(timeout);
+
+                if (event.key.length === 1) {
+                    barcode += event.key;
+                }
+    
+                timeout = setTimeout(() => {
+                    if (event.key === "Enter") {
+                        if ( barcode.length >= 13 ) {
+                            window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
+                        }
+                        barcode = "";
+                    }
+                }, 100);
+            });
+        </script>
     </body>
 </html>
 
