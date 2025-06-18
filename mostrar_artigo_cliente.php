@@ -115,10 +115,47 @@ else{
                         if ( barcode.length >= 13 ) {
                             window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
                         }
+                        else{
+                            showOkPopup("O seu cartão de cliente já foi lido.");
+                        }
                         barcode = "";
                     }
                 }, 100);
             });
+
+            function showOkPopup(message) {
+                if (document.getElementById("ok-popup")) return;
+
+                const popup = document.createElement("div");
+                popup.id = "ok-popup";
+                popup.innerHTML = `
+                    <div class="popup-overlay">
+                        <div class="popup-box">
+                            <p class="popup-text">${message}</p>
+                            <div class="popup-buttons">
+                                <button id="ok-btn">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+
+                document.getElementById("ok-btn").onclick = () => {
+                    document.body.removeChild(popup); // remove o popup ao clicar no OK
+                };
+            }
+             // Remove automaticamente após 7 segundos
+             setTimeout(() => {
+                removePopup();
+            }, 7000);
+
+            // Função auxiliar para remover o popup com segurança
+            function removePopup() {
+                const existing = document.getElementById("ok-popup");
+                if (existing) {
+                    document.body.removeChild(existing);
+                }
+            }
         </script>
     </body>
 </html>

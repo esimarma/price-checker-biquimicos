@@ -49,10 +49,15 @@ $cliente = $_SESSION['cliente'];
     
                 clearTimeout(timeout);
                 timeout = setTimeout(() => {
-                    if (barcode.length > 3) {
-                        console.log("Código de barras lido:", barcode);
-                        window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
-                        barcode = "";
+                    if (event.key === "Enter") {
+                        if (barcode.length < 13) {
+                            showOkPopup("O seu cartão de cliente já foi lido.");
+                        }
+                        else{
+                            console.log("Código de barras lido:", barcode);
+                            window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
+                            barcode = "";
+                        }
                     }
                 }, 100);
             });
@@ -71,7 +76,7 @@ $cliente = $_SESSION['cliente'];
                 inactivityTimer = setTimeout(showConfirmationPopup, INACTIVITY_TIME);
             }
     
-            function showConfirmationPopup() {
+            function showConfirmationPopup() {                
                 const popup = document.createElement("div");
                 popup.id = "inactivity-popup";
                 popup.innerHTML = `
@@ -125,6 +130,40 @@ $cliente = $_SESSION['cliente'];
     
             // Inicializa na primeira vez
             resetInactivityTimer();
+
+            function showOkPopup(message) {
+                if (document.getElementById("ok-popup")) return;
+
+                const popup = document.createElement("div");
+                popup.id = "ok-popup";
+                popup.innerHTML = `
+                    <div class="popup-overlay">
+                        <div class="popup-box">
+                            <p class="popup-text">${message}</p>
+                            <div class="popup-buttons">
+                                <button id="ok-btn">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+
+                document.getElementById("ok-btn").onclick = () => {
+                    document.body.removeChild(popup); // remove o popup ao clicar no OK
+                };
+            }
+             // Remove automaticamente após 7 segundos
+            setTimeout(() => {
+                removePopup();
+            }, 7000);
+
+            // Função auxiliar para remover o popup com segurança
+            function removePopup() {
+                const existing = document.getElementById("ok-popup");
+                if (existing) {
+                    document.body.removeChild(existing);
+                }
+            }
         </script>
     </body>
     </html>
