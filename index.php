@@ -53,6 +53,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
         let barcode = "";
         let timeout = null;
 
+        function entrarEmEcrãCheio() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+            el.requestFullscreen().catch(err => {
+                console.warn("Erro ao entrar em ecrã cheio:", err);
+            });
+        }
+        }
+
+        function handlePrimeiroClique() {
+            entrarEmEcrãCheio();
+            document.removeEventListener("click", handlePrimeiroClique);
+            document.removeEventListener("touchstart", handlePrimeiroClique);
+        }
+
+        // Ativar fullscreen no primeiro clique ou toque
+        document.addEventListener("click", handlePrimeiroClique);
+        document.addEventListener("touchstart", handlePrimeiroClique);
+
         document.addEventListener("keydown", function(event) {
             const popupAtivo = document.getElementById("nif-popup");
             if (popupAtivo) return;
