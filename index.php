@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 </head>
 <body>
     <div class="container">
-    <div id="resultado"></div>
         <div class="header">LEITOR DE PRODUTOS</div>
 
         <div class="nif-bar">
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
         let barcode = "";
         let timeout = null;
 
-       /* function entrarEmEcrãCheio() {
+        function entrarEmEcrãCheio() {
         const el = document.documentElement;
         if (el.requestFullscreen) {
             el.requestFullscreen().catch(err => {
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 
         // Ativar fullscreen no primeiro clique ou toque
         document.addEventListener("click", handlePrimeiroClique);
-        document.addEventListener("touchstart", handlePrimeiroClique);*/
+        document.addEventListener("touchstart", handlePrimeiroClique);
 
         document.addEventListener("keydown", function(event) {
             const popupAtivo = document.getElementById("nif-popup");
@@ -85,16 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 
             timeout = setTimeout(() => {
                 if (event.key === "Enter") {
-
-                    const encoded = encodeURIComponent(barcode);
-                    document.getElementById("resultado").textContent = encoded;
-                    barcode = ""; // limpa o código após exibir, se necessário
-                    /*if (barcode.length < 13) {
+                    if (barcode.length < 13) {
                         window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
                     } else {
                         window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
                     }
-                    barcode = "";*/
+                    barcode = "";
                 }
             }, 100);
         });
