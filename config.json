@@ -6,5 +6,6 @@
     "linhaPreco": 4,
     "codigoArmazem": "1",
     "caminhoImagens": "/price-checker-biquimicos/imagens/",
+    "caminhoImagensProdutos": "C:/Users/esima/Desktop/Imagens",
     "sectores": ["PO1", "PO2", "PO3", "PO4"]
 }

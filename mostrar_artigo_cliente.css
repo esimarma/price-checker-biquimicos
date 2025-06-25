@@ -52,17 +52,6 @@ body {
     font-size: 1.5vw;
 }
 
-.stock {
-    position: absolute;
-    bottom: 10%;  /* Posição relativa ao logo */
-    right: 0;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 1vw;
-    font-weight: bold;
-    z-index: 2; /* Fica por cima do logo */
-}
-
 .image_pvp {
     margin-top: 5vw;
     display: flex;
@@ -151,6 +140,16 @@ body {
     height: auto;
     display: block;
     z-index: 1;
+}
+
+.stock {
+    margin-top: 0.5vh;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Ajustes para telas menores */
