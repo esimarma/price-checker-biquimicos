@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 <body>
     <div class="container">
         <div class="header">LEITOR DE PRODUTOS</div>
-        <input type="text" name="codigo" style="width: 150px; height: 30px; font-size: 14px;" />
+        <input type="text" name="codigo" id="codigo" style="opacity: 0; width: 150px; height: 30px; font-size: 14px;" autofocus  />
 
         <div class="nif-bar">
             <span class="nif-label">É CLIENTE? LEIA O SEU CARTÃO OU INTRODUZA O NIF</span>
@@ -51,6 +51,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
     </div>
 
     <script>
+        const manterFoco = () => {
+        const input = document.getElementById("codigo");
+        if (input) {
+            input.focus();
+        }
+        };
+
+        // Garante o foco inicial
+        window.addEventListener("load", manterFoco);
+
+        // Sempre que perder o foco, volta a focar
+        document.addEventListener("click", () => {
+            setTimeout(manterFoco, 50);
+        });
+
+        document.addEventListener("keydown", () => {
+            setTimeout(manterFoco, 50);
+        });
         let barcode = "";
         let timeout = null;
 
