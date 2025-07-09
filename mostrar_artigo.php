@@ -8,9 +8,9 @@ $config = json_decode(file_get_contents('config.json'), true);
 $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : null;
 $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
 
-// Se o artigo não for encontrado, redireciona para not_found_page.html
+// Se o artigo não for encontrado, redireciona para pagina_nao_encontrada.html
 if (!$artigo) {
-    header("Location: not_found_page.html?tipo=default");
+    header("Location: pagina_nao_encontrada.html?tipo=default");
     exit;
 } else {
     if($artigo['precoPromocao']){
@@ -110,7 +110,7 @@ if (!$artigo) {
                 if (barcode.length < 13) {
                     window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
                 } else {
-                    window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
+                    window.location.href = "pagina_espera/pagina_espera.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
                 }
                 barcode = "";
             }

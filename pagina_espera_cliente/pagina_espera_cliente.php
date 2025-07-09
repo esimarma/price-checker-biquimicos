@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['codigo'])) {
         header("Location: ../leitor_produto_cliente.php");
         exit;
     } else {
-        header("Location: ../cliente_not_found.html");
+        header("Location: ../pagina_nao_encontrada.html");
         exit;
     }
 }
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['codigo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aguarde...</title>
-    <link rel="stylesheet" href="wait_page_style.css">
+    <link rel="stylesheet" href="pagina_espera_style.css">
 </head>
 <body>
     <div class="container" id="container">

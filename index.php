@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include 'db/connection.php';
@@ -15,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
         header("Location: leitor_produto_cliente.php");
         exit;
     } else {
-        header("Location: cliente_not_found.html");
+        header("Location: pagina_nao_encontrada.html");
         exit;
     }
 }
@@ -99,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
                     if (barcode.length < 13) {
                         window.location.href = "pagina_espera_cliente/pagina_espera_cliente.php?codigo=" + encodeURIComponent(barcode);
                     } else {
-                        window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
+                        window.location.href = "pagina_espera/pagina_espera.html?codigo=" + encodeURIComponent(barcode) + "&tipo=default";
                     }
                     barcode = "";
                 }

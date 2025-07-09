@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['cliente'])) {
-    header("Location: not_found_page.html?tipo=nif");
+    header("Location: pagina_nao_encontrada.html?tipo=nif");
     exit;
 }
 
@@ -55,7 +55,7 @@ $cliente = $_SESSION['cliente'];
                         }
                         else{
                             console.log("Código de barras lido:", barcode);
-                            window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
+                            window.location.href = "pagina_espera/pagina_espera.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
                             barcode = "";
                         }
                     }

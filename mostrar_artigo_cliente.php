@@ -9,14 +9,14 @@ $config = json_decode(file_get_contents($configPath), true);
 $codigo = isset($_GET['codigo']) ? $_GET['codigo'] : null;
 $artigo = $codigo ? getArtigoPorCodigo($codigo) : null;
 
-// Se o artigo não for encontrado, redireciona para not_found_page.html
+// Se o artigo não for encontrado, redireciona para pagina_nao_encontrada.html
 if (!$artigo) {
-    header("Location: not_found_page.html?tipo=cliente");
+    header("Location: pagina_nao_encontrada.html?tipo=cliente");
     exit;
 } else {
     session_start();
     if (!isset($_SESSION['cliente'])) {
-        header("Location: not_found_page.html?tipo=nif");
+        header("Location: pagina_nao_encontrada.html?tipo=nif");
         exit;
     }
 
@@ -110,7 +110,7 @@ if (!$artigo) {
         timeout = setTimeout(() => {
             if (event.key === "Enter") {
                 if (barcode.length >= 13) {
-                    window.location.href = "wait_page/wait_page.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
+                    window.location.href = "pagina_espera/pagina_espera.html?codigo=" + encodeURIComponent(barcode) + "&tipo=cliente";
                 } else {
                     showOkPopup("O seu cartão de cliente já foi lido.");
                 }
