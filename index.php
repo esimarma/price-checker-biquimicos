@@ -32,7 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 <body>
     <div class="container">
         <div class="header">LEITOR DE PRODUTOS</div>
-        <input type="text" name="codigo" id="codigo" style="opacity: 0; width: 150px; height: 30px; font-size: 14px;" autofocus  />
+        <input
+            type="text"
+            id="codigo"
+            readonly
+            inputmode="none"
+            style="opacity: 100; position: absolute;"
+            />
 
         <div class="nif-bar">
             <span class="nif-label">É CLIENTE? LEIA O SEU CARTÃO OU INTRODUZA O NIF</span>
@@ -51,6 +57,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
     </div>
 
     <script>
+        const input = document.getElementById('codigo');
+
+        // Remover readonly para permitir digitação do leitor
+        input.removeAttribute('readonly');
+
+        // Focar sem abrir teclado
+        setTimeout(() => {
+        input.focus();
+        }, 100);
+
         const manterFoco = () => {
         const input = document.getElementById("codigo");
         if (input) {
@@ -71,25 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
         });
         let barcode = "";
         let timeout = null;
-
-        function entrarEmEcrãCheio() {
-        const el = document.documentElement;
-        if (el.requestFullscreen) {
-            el.requestFullscreen().catch(err => {
-                console.warn("Erro ao entrar em ecrã cheio:", err);
-            });
-        }
-        }
-
-        function handlePrimeiroClique() {
-            entrarEmEcrãCheio();
-            document.removeEventListener("click", handlePrimeiroClique);
-            document.removeEventListener("touchstart", handlePrimeiroClique);
-        }
-
-        // Ativar fullscreen no primeiro clique ou toque
-        document.addEventListener("click", handlePrimeiroClique);
-        document.addEventListener("touchstart", handlePrimeiroClique);
 
         document.addEventListener("keydown", function(event) {
             const popupAtivo = document.getElementById("nif-popup");
@@ -127,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
                     <div class="popup-box">
                         <form method="POST">
                             <p class="popup-text">Introduza o seu NIF:</p>
-                            <input type="text" id="nifInput" name="nif" placeholder="Digite o NIF" required />
+                            <input type="text" id="nifInput" name="nif" placeholder="Digite o NIF" required autofocus />
                             <div class="popup-buttons">
                                 <button id="nif-cancelar" type="button" onclick="hideNifPopup()">CANCELAR</button>
                                 <button id="nif-confirmar" type="submit">CONFIRMAR</button>
