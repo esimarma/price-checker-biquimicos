@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nif'])) {
 <body>
     <div class="container">
         <div class="header">LEITOR DE PRODUTOS</div>
-        <input type="text" id="codigo" readonly inputmode="none" style="opacity: 100; position: absolute;"/>
+        <input type="text" id="codigo" readonly inputmode="none" style="opacity: 0; position: absolute;"/>
 
         <div class="nif-bar">
             <span class="nif-label">É CLIENTE? LEIA O SEU CARTÃO OU INTRODUZA O NIF</span>
