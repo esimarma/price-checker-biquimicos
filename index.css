@@ -29,7 +29,7 @@ body {
 
 .header {
     color: #1d93a5;
-    font-size: 2.5vw;
+    font-size: 4vw;
     font-weight: bold;
     margin-top: 5vw;
 }
@@ -38,11 +38,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 14vw 2vw 1vw 2vw;
+    margin: 10vw 2vw 0vw 2vw;
 }
 
 .nif-label {
-    font-size: 1.3vw;
+    font-size: 2vw;
     font-weight: bold;
     color: #000;
 }
@@ -52,7 +52,7 @@ body {
     color: white;
     border: none;
     padding: 0.5vw 1vw;
-    font-size: 1vw;
+    font-size: 2vw;
     border-radius: 20px;
     cursor: pointer;
     white-space: nowrap;
@@ -86,7 +86,7 @@ body {
 
 .text {
     flex: 1; 
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 .icon {
@@ -111,16 +111,16 @@ body {
 
 .popup-box {
     background: #fff;
-    border-radius: 20px;
-    padding: 2vw;
-    width: 50vw;
-    max-width: 400px;
+    border-radius: 30px;
+    padding: 3vw;
+    width: 70vw;
+    max-width: 600px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .popup-text {
-    font-size: 1.5vw;
+    font-size: 2vw;
     font-weight: bold;
     margin-bottom: 1vw;
 }
@@ -128,7 +128,7 @@ body {
 #nifInput {
     width: 80%;
     padding: 0.5vw;
-    font-size: 1vw;
+    font-size: 1.5vw;
     border-radius: 10px;
     border: 1px solid #ccc;
     margin-bottom: 1.5vw;
@@ -141,7 +141,7 @@ body {
 
 .popup-buttons button {
     padding: 0.5vw 1.5vw;
-    font-size: 1vw;
+    font-size: 2vw;
     border-radius: 20px;
     cursor: pointer;
     border: none;
@@ -154,51 +154,6 @@ body {
 
 #nif-confirmar {
     background-color: black;
-}
-@media (max-width: 768px) {
-    .header {
-        font-size: 5vw;
-    }
-    .nif-section {
-        font-size: 3vw;
-    }
-    #nif-input {
-        font-size: 3vw;
-        width: 40vw;
-    }
-    .nif-input-group button {
-        font-size: 3vw;
-    }
-    .box {
-        font-size: 3.5vw;
-        padding: 5vw;
-    }
-    .icon {
-        font-size: 8vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        font-size: 6vw;
-    }
-    .nif-section {
-        font-size: 4vw;
-    }
-    #nif-input {
-        font-size: 4vw;
-        width: 50vw;
-    }
-    .nif-input-group button {
-        font-size: 4vw;
-    }
-    .box {
-        font-size: 4.5vw;
-        padding: 6vw;
-    }
-    .icon {
-        font-size: 10vw;
-    }
 }
 
 #fullscreen-overlay {

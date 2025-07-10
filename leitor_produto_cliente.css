@@ -29,13 +29,13 @@ body {
 
 .header {
     color: #4D5252;
-    font-size: 2.5vw;
+    font-size: 4vw;
     font-weight: bold;
     margin-top: 5vw;
 }
 
 .welcome {
-    font-size: 1.3vw;
+    font-size: 2vw;
     font-weight: bold;
     color: #000;
     display: flex;
@@ -66,39 +66,13 @@ body {
 
 .text {
     flex: 1;
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 .icon {
     width: 20vw;
     height: auto;
     margin-left: 2vw;
-}
-
-@media (max-width: 768px) {
-    .header {
-        font-size: 5vw;
-    }
-    .box {
-        font-size: 3.5vw;
-        padding: 5vw;
-    }
-    .icon {
-        font-size: 8vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        font-size: 6vw;
-    }
-    .box {
-        font-size: 4.5vw;
-        padding: 6vw;
-    }
-    .icon {
-        font-size: 10vw;
-    }
 }
 
 /* === POPUP CSS === */
@@ -171,8 +145,8 @@ body {
     position: absolute;
     top: 2vw;
     left: 3vw;
-    width: 4vw;
-    height: 4vw;
+    width: 6vw;          
+    height: 6vw;       
     border-radius: 50%;
     padding: 0;
     z-index: 1000;

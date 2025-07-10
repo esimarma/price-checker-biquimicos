@@ -84,7 +84,7 @@ if (!$artigo) {
 
         <!-- Logo e stock -->
         <div class="logo">
-            <img src="<?= htmlspecialchars($config['caminhoImagens'] . "logo.svg") ?>" alt="Logo">
+            <img src="Imagens/logo.svg" alt="Logo">
             <div class="stock">
                 <p><?= intval($artigo['existencia']) ?></p>
             </div>

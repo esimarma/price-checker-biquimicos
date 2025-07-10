@@ -31,7 +31,7 @@ body {
         #4D5252;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-    font-size: 2vw;
+    font-size: 2.5vw;
     font-weight: bold;
     text-align: left;
     margin-left: 2vw;
@@ -40,7 +40,7 @@ body {
 
 .info h2 {
     color: white;
-    font-size: 2.5vw;
+    font-size: 3vw;
     font-weight: bold;
     margin-top: 3vw;
     margin-left: 2vw;
@@ -49,7 +49,7 @@ body {
 .family {
     color: lightgrey;
     margin-left: 2vw;
-    font-size: 1.5vw;
+    font-size: 2.5vw;
 }
 
 .image_pvp {
@@ -63,30 +63,33 @@ body {
 .image {
     display: flex;
     justify-content: center;
-    width: 50%;
-    aspect-ratio: 16/9; /* Mantém uma proporção fixa */
+    width: 55%;
+    aspect-ratio: 16/9;
 }
 
 .image img {
-    width: 70%;
+    width: 90%;
     height: 100%;
-    object-fit: contain; /* Ajusta sem cortes */
+    object-fit: contain;
 }
 
 .pvp {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .price_iva {
     display: flex;
     justify-content: center;
-    align-items: baseline; /* Muda aqui */
+    align-items: baseline;
     gap: 5px;
     flex-wrap: nowrap;
 }
 
 .price {
-    font-size: 8vw;
+    font-size: 9vw;
     font-weight: bold;
     color: black;
     text-align: right;
@@ -96,7 +99,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 1vw;
+    font-size: 1.5vw;
     font-weight: bold;
     color: black;
     line-height: 1.2;
@@ -112,14 +115,14 @@ body {
 }
 
 .unvenda {
-    font-size: 2vw;
-    color: #1d93a5;
+    font-size: 2.5vw;
+    color: #434343;
     font-weight: bold;
     text-align: right;
 }
 
 .precoun {
-    font-size: 2.5vw;
+    font-size: 3vw;
     color: #434343;
     font-weight: bold;
     text-align: right;
@@ -143,43 +146,9 @@ body {
 }
 
 .stock {
-    margin-top: 0.5vh;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 1vw;
+    font-size: 2vw;
     font-weight: bold;
     color: #000;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 768px) {
-    .info {
-        font-size: 5vw;
-        margin-left: 2vw;
-    }
-    .info h2 {
-        font-size: 4vw;
-        margin-top: 3vw;
-    }
-    .image_pvp {
-        flex-direction: column;
-        align-items: center;
-        margin-left: 0;
-    }
-    .image, .pvp {
-        width: 90%;
-        text-align: center;
-    }
-    .price {
-        font-size: 15vw;
-    }
-    .unvenda {
-        font-size: 4vw;
-    }
-    .logo {
-        width: 25vw;
-    }
 }
 
 .popup-overlay {
